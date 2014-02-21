@@ -1,36 +1,54 @@
 //
-//  UIFillButton.m
-//  soundgarden
+//  MRAFillButton.m
 //
 //  Created by paul adams on 06/01/2014.
 //  Copyright (c) 2014 dnbapp. All rights reserved.
 //
-// Custom UIButton Class which has a fill indicator to show progress status
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
-
-
-//custom layer for drawing the buttons fill
-
-
-#import "UIFillButton.h"
+#import "MRAFillButton.h"
 #import "UIView+additions.h"
 #import  <QuartzCore/QuartzCore.h>
 #import "ScaleValue.h"
 
-@interface UIFillButton ()
+
+//default values
+static const float MINVALUE = 0;
+static const float MAXVALUE = 1;
+static const float FILL_OPACITY_UNSELECTED = 0.5f;
+static const float FILL_OPACITY_SELECTED = 1.0f;
+static const float FILL_LAYER_OPACITY_DEFAULT = 0.3f;
+
+
+@interface MRAFillButton ()
 @property (strong,nonatomic)CALayer *fillLayer;
 @property (nonatomic, strong) CALayer *maskLayer;
 @property (assign,nonatomic,getter = isFilled)BOOL buttonFilled;
 @property (assign,nonatomic)float fillStatus;
 @end
 
-
-@implementation UIFillButton {
+@implementation MRAFillButton {
     CGRect _layerFrame;
     CALayer *_maskLayer;
 }
 
-#pragma mark Button Draw Methods
+#pragma mark Getters
 - (CALayer *)fillLayer {
     if (!_fillLayer) {
             _fillLayer = [CALayer layer];
@@ -38,6 +56,7 @@
     return _fillLayer;
 }
 
+#pragma mark Setters
 - (void)setBackgroundFill:(UIColor *)backgroundFill {
     _backgroundFill = backgroundFill;
     [self setNeedsDisplay];
@@ -48,14 +67,16 @@
     [self configureForegroundLayer];
 }
 
+- (void)setButtonCornerRadius:(CGFloat)buttonCornerRadius {
+    _buttonCornerRadius = buttonCornerRadius;
+    _maskLayer.cornerRadius = _buttonCornerRadius;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    
     self = [super initWithCoder:aDecoder];
-    
     if (self) {
         [self initDefaults];
     }
-    
     return self;
 }
 
@@ -71,9 +92,10 @@
     
     self.backgroundColor = [UIColor clearColor];
     self.opaque = NO;
+    
     //set min and max value for status
-    _minimumValue = 0;
-    _maximumValue = 1.0f;
+    _minimumValue = MINVALUE;
+    _maximumValue = MAXVALUE;
     
     //button not filled by default
     _buttonFilled = NO;
@@ -83,8 +105,8 @@
     _selectable = YES;
     
     //set default colour for layer
-    self.fillLayer.backgroundColor = [UIColor grayColor].CGColor;
-    self.fillLayer.opacity = 0.3f;
+    self.fillLayer.backgroundColor = [UIColor redColor].CGColor;
+    self.fillLayer.opacity = FILL_LAYER_OPACITY_DEFAULT;
     //ensure layer is scaled for retina
     self.fillLayer.contentsScale = [UIScreen mainScreen].scale;
     _layerFrame = self.bounds;
@@ -100,6 +122,7 @@
     [self.layer addSublayer:self.fillLayer];
     
 }
+
 
 - (void)configureForegroundLayer {
     self.fillLayer.backgroundColor = self.foreGroundFill.CGColor;
@@ -139,9 +162,15 @@
     UIBezierPath *uiPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0];
     CGContextSaveGState(ctx);
     if (!self.backgroundFill) {
-        [[UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:0.1f]setFill];
+        [[UIColor colorWithRed:1.0f
+                         green:0.0f
+                          blue:0.0f
+                         alpha:0.1f]setFill];
     }else {
-         [[UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:0.1f]setFill];
+         [[UIColor colorWithRed:1.0f
+                          green:0.0f
+                           blue:0.0f
+                          alpha:0.1f]setFill];
         [self.backgroundFill setFill];
     }
     [uiPath fill];
@@ -153,9 +182,9 @@
     
     if (!self.isSelectHeld) {
         if (highlighted && self.isSelectable) {
-            self.fillLayer.opacity = 1.0f;
+            self.fillLayer.opacity = FILL_OPACITY_SELECTED;
         } else {
-            self.fillLayer.opacity = 0.4f;
+            self.fillLayer.opacity = FILL_OPACITY_UNSELECTED ;
         }
     }
 }
@@ -164,12 +193,11 @@
     [super setSelected:selected];
     if (selected && self.isSelectable) {
       
-        self.fillLayer.opacity = 1.0f;
+        self.fillLayer.opacity = FILL_OPACITY_SELECTED;
     }else {
        // NSLog(@"not selected");
-        self.fillLayer.opacity = 0.4f;
+        self.fillLayer.opacity = FILL_OPACITY_UNSELECTED ;
     }
-
 }
 
 #pragma mark UIControl Methods
@@ -182,14 +210,14 @@
         self.selected = YES;
         }
     }
-[self sendActionsForControlEvents:UIControlEventValueChanged];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+    
 return [super beginTrackingWithTouch:touch withEvent:event];
 }
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     
     if (CGRectContainsPoint(self.bounds,[touch locationInView: self])) {
-        //[self cancelTrackingWithEvent:event];
         [self sendActionsForControlEvents:UIControlEventTouchDragInside];
     }else  {
          [self sendActionsForControlEvents:UIControlEventTouchDragOutside];
@@ -200,22 +228,16 @@ return [super beginTrackingWithTouch:touch withEvent:event];
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     [super endTrackingWithTouch:touch withEvent:event];
-   // if (CGRectContainsPoint(self.bounds,[touch locationInView: self]))
-    //{
         if (self.isSelectHeld) {
-             //self.selected = !self.selected;
         }else {
             self.selected = NO;
         }
         [self sendActionsForControlEvents:UIControlEventValueChanged];
-   // }
 }
 
 - (void)cancelTrackingWithEvent:(UIEvent *)event {
-    
     [super cancelTrackingWithEvent:event];
     if (self.isSelectHeld) {
-        // self.selected = !self.selected;
     }else {
         self.selected = NO;
     }    

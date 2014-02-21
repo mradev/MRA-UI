@@ -1,21 +1,48 @@
 //
-//  VInidcator.m
-//  testingstuff
+//  MRAIndicator.m
+//  MRA-UI
 //
 //  Created by paul adams on 07/01/2014.
 //  Copyright (c) 2014 paul adams. All rights reserved.
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
-#import "VInidcator.h"
+#import "MRAIndicator.h"
 #import "ScaleValue.h"
 
-@implementation VInidcator {
+//output defaults
+static const float MINOUTVALUE = 0;
+static const float MAXOUTVALUE = 1.0f;
+static const float INDICATOR_OPACITY = 0.8f;
+static const float INDICATOR_SCALEFACTOR = 0.40f;
+
+//border width
+static const CGFloat DEF_iPAD_BORDER_WIDTH = 3.0f;
+static const CGFloat DEF_iPHONE_BORDER_WIDTH = 2.0f;
+
+
+@implementation MRAIndicator {
     CALayer *_indicatorLayer;
     CALayer *_borderLayer;
     CGFloat _maxHeight;
     CGFloat _maxWidth;
     CGRect _indicatorFrame;
-    
     CGFloat _currentLevel;
 }
 
@@ -38,7 +65,6 @@
 }
 
 #pragma mark drawing helper methods
-
 - (CGFloat)cornerRadiusWithMaxDim:(CGFloat)maxdim {
     return (maxdim * 0.50);
 }
@@ -46,17 +72,20 @@
 - (CGRect)calculateIndicatorFrame {
     
     CGRect returnRect;
+    CGFloat inset;
     if (self.isVertical) {
-        returnRect = CGRectMake(CGRectGetMinX(self.bounds) + (self.borderWidth * 2),
-                                CGRectGetMaxY(self.bounds) - (self.borderWidth * 2),
-                                CGRectGetMaxX(self.bounds) -  (self.borderWidth * 4),
-                                CGRectGetMaxY(self.bounds) -  (self.borderWidth * 4));
+  
+        inset = CGRectGetMaxX(self.bounds)*INDICATOR_SCALEFACTOR;
+        CGRect insetRect = CGRectInset(self.bounds,inset,inset);
+        CGFloat newOriginY = CGRectGetMaxY(insetRect);
+        insetRect.origin.y = newOriginY;
+        returnRect = insetRect;
+
     }else {
-        returnRect = CGRectMake(CGRectGetMinX(self.bounds) + (self.borderWidth * 2),
-                                CGRectGetMinY(self.bounds) + (self.borderWidth * 2),
-                                CGRectGetMaxX(self.bounds) - (self.borderWidth * 4),
-                                CGRectGetMaxY(self.bounds) - (self.borderWidth * 4));
+        inset = CGRectGetMaxY(self.bounds)*INDICATOR_SCALEFACTOR;
+        returnRect = CGRectInset(self.bounds, inset, inset);
     }
+    
     return returnRect;
 }
 
@@ -68,18 +97,14 @@
     _maxHeight = _indicatorFrame.size.height;
     
     CGFloat borderCornerRadius;
-    CGFloat indicCornerRadius;
     
     if (self.isVertical) {
-       borderCornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxX(self.bounds)];
-        indicCornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxX(_indicatorFrame)];
+        borderCornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxX(self.bounds)];
     }else {
         borderCornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxY(self.bounds)];
-        indicCornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxY(_indicatorFrame)];
     }
     _borderLayer.borderWidth = self.borderWidth;
     _borderLayer.cornerRadius = borderCornerRadius;
-    _indicatorLayer.cornerRadius = indicCornerRadius;
     
     //reset level to new boundaries
     self.indicatorLevel = _currentLevel;
@@ -89,14 +114,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         [self initDefaults];
     }
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self initDefaults];
@@ -109,73 +132,48 @@
     
     self.opaque = NO;
     [self setBackgroundColor:[UIColor clearColor]];
-    
-    // CGFloat  cornerRadius;
-    
+   
     //set border defaults
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.borderWidth = 5.0f;
+        self.borderWidth = DEF_iPAD_BORDER_WIDTH;
     }else {
-        self.borderWidth = 4.0f;
+        self.borderWidth = DEF_iPHONE_BORDER_WIDTH;
     }
 
     _borderColour = [UIColor blackColor];
     _indicatorColour = [UIColor redColor];
-    
-    //indicator vertical by default
-    _vertical = YES;
-    
+        
     //default min max level
-    _minimumLevel = 0;
-    _maximumLevel = 1;
+    _minimumLevel = MINOUTVALUE;
+    _maximumLevel = MAXOUTVALUE;
     
     //setup borderlayer
     _borderLayer = [CALayer layer];
     _borderLayer.frame = self.bounds;
     
-    //calculate frame sizes for border and indicator
-    [self calculateFrames];
-    /*
-     if (self.isVertical) {
-     cornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxX(self.bounds)];
-     }else {
-     cornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxY(self.bounds)];
-     }
-     */
-    //_borderLayer.cornerRadius = cornerRadius;
+    _indicatorFrame = CGRectZero;
+
     _borderLayer.contentsScale = [UIScreen mainScreen].scale;
     _borderLayer.backgroundColor = [UIColor clearColor].CGColor;
     _borderLayer.borderColor = self.borderColour.CGColor;
     _borderLayer.borderWidth = self.borderWidth;
     [self.layer addSublayer:_borderLayer];
     
-    //set indicator default frame size
-    /*
-     _indicatorFrame = [self calculateIndicatorFrame];
-     _maxHeight = _indicatorFrame.size.height;
-     _maxWidth = _indicatorFrame.size.width;
-     _indicatorFrame.size.height = 0;
-     */
     //setup indicator layer
     _indicatorLayer = [CALayer layer];
     _indicatorLayer.backgroundColor = self.indicatorColour.CGColor;
-    _indicatorLayer.opacity = 0.8f;
+    _indicatorLayer.opacity = INDICATOR_OPACITY;
     //ensure layer is scaled for retina
     _indicatorLayer.contentsScale = [UIScreen mainScreen].scale;
     _indicatorLayer.frame = _indicatorFrame;
-    /*
-     if (self.isVertical) {
-     cornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxX(_indicatorFrame)];
-     }else {
-     cornerRadius = [self cornerRadiusWithMaxDim:CGRectGetMaxY(_indicatorFrame)];
-     }
-     _indicatorLayer.cornerRadius = cornerRadius;
-     */
+  
     [self.layer addSublayer:_indicatorLayer];
     
     //set initial level
     self.indicatorLevel = 0;
+    
+    //calculate frame sizes for border and indicator
+    [self calculateFrames];
     
     
 }

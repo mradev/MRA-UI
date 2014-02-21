@@ -1,38 +1,71 @@
 //
-//  ACGSlider.m
+//  MRALayerSlider.m
 //  testingstuff
 //
 //  Created by paul adams on 07/01/2014.
 //  Copyright (c) 2014 paul adams. All rights reserved.
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
-#import "MRAViewSlider.h"
+
+
+#import "MRALayerSlider.h"
 #import "ScaleValue.h"
 
-@interface MRAViewSlider ()
+@interface MRALayerSlider()
 @property (strong,nonatomic)CALayer *cursorLayer;
-@property (strong,nonatomic)UIView *cursorView;
 @property (strong,nonatomic)CALayer *borderLayer;
 @property(strong,nonatomic)NSNumber *outValue;
 @property(assign,nonatomic,getter = isMoving)BOOL moving;
+@property (assign,nonatomic)BOOL viewPadding;
 @end
 
-static const float THUMB_PADDING = 12.0f;
+//output defaults
+static const float MINOUTVALUE = 0;
+static const float MAXOUTVALUE = 1.0f;
 
-@implementation MRAViewSlider {
+//cursor
+static const CGFloat CURSOR_PERCENT_BOUNDS = 0.90f;
+static const CGFloat THUMB_PADDING = 12.0f;
+
+//slider Curve
+static const CGFloat DEF_CURVE_PERCENTAGE = 0.25f;
+static const CGFloat CIRCULAR_CURVE = 0.5f;
+
+//border width
+static const CGFloat DEF_iPAD_BORDER_WIDTH = 3.0f;
+static const CGFloat DEF_iPHONE_BORDER_WIDTH = 2.0f;
+
+
+
+@implementation MRALayerSlider {
     
     CGFloat _cursorDiameter;
     CGFloat _cursorPercentOfBounds;
     CGFloat _cursorBorderWidth;
     CGRect _cursorFrame;
     CGRect _railFrame;
-    
     CGRect _thumbPad;
     CGFloat _newX;
     CGFloat _newY;
-
     CGFloat _maxPoint;
-    CGFloat _curvePercent;
+
 }
 
 
@@ -69,7 +102,16 @@ static const float THUMB_PADDING = 12.0f;
 
 - (void)setCircular:(BOOL)circular {
     _circular = circular;
-    _curvePercent = 0.5;
+    _curvePercent = CIRCULAR_CURVE;
+    [self configureLayers];
+}
+
+- (void)setCurvePercent:(CGFloat)curvePercent {
+    _curvePercent = curvePercent;
+    
+    if (!_circular) {
+        _curvePercent = curvePercent;
+    }
     [self configureLayers];
 }
 
@@ -80,13 +122,6 @@ static const float THUMB_PADDING = 12.0f;
         _cursorLayer = [CALayer layer];
     }
     return _cursorLayer;
-}
-
-- (UIView *)cursorView {
-    if (!_cursorView) {
-        _cursorView = [[UIView alloc]init];
-    }
-    return _cursorView;
 }
 
 - (CALayer *)borderLayer {
@@ -122,7 +157,6 @@ static const float THUMB_PADDING = 12.0f;
 }
 
 
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -150,51 +184,47 @@ static const float THUMB_PADDING = 12.0f;
     self.opaque = NO;
     
     //cursor defaults
-    _cursorPercentOfBounds = 0.90f;
+    _cursorPercentOfBounds = CURSOR_PERCENT_BOUNDS;
     //border defaults
     
+    
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.borderWidth = 5.0f;
+        self.borderWidth = DEF_iPAD_BORDER_WIDTH;
     }else {
-        self.borderWidth = 4.0f;
+        self.borderWidth = DEF_iPHONE_BORDER_WIDTH;
     }
-   // _borderWidth = 4.0f;
     
     //percent to curve on corner radius
-    _curvePercent = 0.25;
+    _curvePercent = DEF_CURVE_PERCENTAGE;
     
     //cursor border set same as border layer, could change this
     _cursorBorderWidth = _borderWidth;
     
     //input/output value defaults
-    _minimumValue = 0.0f;
-    _maximumValue = 1.0f;
+    _minimumValue = MINOUTVALUE;
+    _maximumValue = MAXOUTVALUE;
     
     //set layer frames
     [self configureLayers];
     
     //setup the borderlayer view defaults
-    
     self.borderLayer.backgroundColor = [UIColor clearColor].CGColor;
+    
     //retina set
     self.borderLayer.contentsScale = [UIScreen mainScreen].scale;
     
     [self.layer addSublayer:self.borderLayer];
     
-    //setup the cursorlayer view defaults //use for animation only too jerky for touch
+    //setup the cursorlayer view defaults
+    self.borderLayer.borderColor = [UIColor blackColor].CGColor;
     self.cursorLayer.borderColor = [UIColor blackColor].CGColor;
-    self.cursorLayer.backgroundColor = [UIColor redColor].CGColor;
+    self.cursorLayer.backgroundColor = [UIColor clearColor].CGColor;
+    
     //retina set
     self.cursorLayer.contentsScale = [UIScreen mainScreen].scale;
     
-    //[self.layer addSublayer:self.cursorLayer];
-    
-    self.cursorView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.cursorView.layer.backgroundColor = [UIColor redColor].CGColor;
-   // self.cursorView.layer.contentsScale = [UIScreen mainScreen].scale;
-    self.cursorView.userInteractionEnabled = NO;
-    [self addSubview:self.cursorView];
-    
+    [self.layer addSublayer:self.cursorLayer];
 }
 
 #pragma mark draw Methods
@@ -206,17 +236,12 @@ static const float THUMB_PADDING = 12.0f;
 
 - (void)configureCursorStrokeColour {
     self.cursorLayer.borderColor = self.cursorStrokeColour.CGColor;
-    self.cursorView.layer.borderColor = self.cursorStrokeColour.CGColor;
-    [self.cursorView setNeedsDisplay];
-    // [self.cursorLayer setNeedsDisplay];
+    [self.cursorLayer setNeedsDisplay];
 }
 - (void)configureCursorColour {
     self.cursorLayer.backgroundColor = self.cursorColour.CGColor;
-    self.cursorView.layer.backgroundColor = self.cursorColour.CGColor;
-    [self.cursorView setNeedsDisplay];
-    //[self.cursorLayer setNeedsDisplay];
+    [self.cursorLayer setNeedsDisplay];
 }
-
 
 - (void)configureLayers {
     CGFloat radius;
@@ -240,12 +265,10 @@ static const float THUMB_PADDING = 12.0f;
     _cursorDiameter = maxDiameter;
     radius = [self cornerRadiusWithMaxDiameter:_cursorDiameter];
     self.cursorLayer.cornerRadius = radius;
-    self.cursorView.layer.cornerRadius = radius;
     
     
     //set cursor border
     self.cursorLayer.borderWidth = _borderWidth;
-    self.cursorView.layer.borderWidth = _borderWidth;
     CGFloat cursorCenter = [self cursorCenterPoint];
     
     //set cursor frame vertical and horizontal
@@ -259,8 +282,6 @@ static const float THUMB_PADDING = 12.0f;
                                   _cursorDiameter,_cursorDiameter);
     }
     self.cursorLayer.frame = _cursorFrame;
-    self.cursorView.frame = _cursorFrame;
-    [self.cursorView setNeedsDisplay];
 }
 
 
@@ -287,7 +308,6 @@ static const float THUMB_PADDING = 12.0f;
         finalVal = self.maximumValue;
     }
     self.outValue = @(finalVal);
-    //[self positionSlider:self.outValue];
     [self cursorPosition:[self.outValue floatValue]];
     
     [self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -326,7 +346,11 @@ static const float THUMB_PADDING = 12.0f;
     self.moving = YES;
     CGPoint touchPoint = [touch locationInView:self];
      _thumbPad = [self thumbArea];
-    // [self setNeedsDisplay];//temp to test pad region
+    
+    //view padding region
+    if (self.viewPadding) {
+        [self setNeedsDisplay];
+    }
       if(CGRectContainsPoint(_thumbPad, touchPoint)) {
           _newX =  touchPoint.x -  _cursorFrame.size.width * 0.5;
           _newY =  touchPoint.y - _cursorFrame.size.height * 0.5;
@@ -342,7 +366,6 @@ static const float THUMB_PADDING = 12.0f;
 }
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-   
     self.moving = NO;
     [super endTrackingWithTouch:touch withEvent:event];
 }
@@ -437,15 +460,12 @@ static const float THUMB_PADDING = 12.0f;
                                       usingnewMin:self.minimumValue
                                         andnewMax:self.maximumValue]);
      }
-  //  NSLog(@"OUTVAL %f",[self.outValue floatValue]);
 }
 
 
 //update layer frame - animates
 - (void)cursorUpdate {
     self.cursorLayer.frame = _cursorFrame;
-    self.cursorView.frame = _cursorFrame;
-    [self.cursorView setNeedsDisplay];
 }
 
 //to test thumb padding area only

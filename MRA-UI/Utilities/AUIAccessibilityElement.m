@@ -10,14 +10,16 @@
 
 @implementation AUIAccessibilityElement
 
-
--(void)accessibilityIncrement {
-    
-    [self.delegate incrementWithIdentifier:self.accessibilityIdentifier];
+- (void)accessibilityIncrement {
+    if ([self.delegate respondsToSelector:@selector(incrementWithIdentifier:)]) {
+        [self.delegate incrementWithIdentifier:self.accessibilityIdentifier];
+    }
 }
 
--(void)accessibilityDecrement {
-    [self.delegate decrementWithIdentifier:self.accessibilityIdentifier];
+- (void)accessibilityDecrement {
+    if ([self.delegate respondsToSelector:@selector(decrementWithIdentifier:)]) {
+        [self.delegate decrementWithIdentifier:self.accessibilityIdentifier];
+    }
 }
 
 

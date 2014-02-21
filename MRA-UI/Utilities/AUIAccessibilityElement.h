@@ -10,8 +10,8 @@
 
 @protocol AUIAccessibilityDelegate <NSObject>
 @optional
--(void)incrementWithIdentifier:(NSString*)identifier;
--(void)decrementWithIdentifier:(NSString*)identifier;
+- (void)incrementWithIdentifier:(NSString*)identifier;
+- (void)decrementWithIdentifier:(NSString*)identifier;
 @end
 
 @interface AUIAccessibilityElement : UIAccessibilityElement
