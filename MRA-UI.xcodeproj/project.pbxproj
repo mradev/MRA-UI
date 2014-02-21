@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E51D8D718B64B2E009F7275 /* UIView+additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E51D8D618B64B2E009F7275 /* UIView+additions.m */; };
+		2E51D8DA18B64D98009F7275 /* MRALayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E51D8D918B64D98009F7275 /* MRALayerSlider.m */; };
+		2E51D92D18B7BB77009F7275 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5253318B647DE00411BF1 /* Foundation.framework */; };
+		2E51D93218B7BB77009F7275 /* MRAUI.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2E51D93118B7BB77009F7275 /* MRAUI.h */; };
+		2E51D93418B7BB77009F7275 /* MRAUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E51D93318B7BB77009F7275 /* MRAUI.m */; };
+		2E51D93A18B7BB77009F7275 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5255518B647DE00411BF1 /* XCTest.framework */; };
+		2E51D93B18B7BB77009F7275 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5253318B647DE00411BF1 /* Foundation.framework */; };
+		2E51D93C18B7BB77009F7275 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5253718B647DE00411BF1 /* UIKit.framework */; };
+		2E51D93F18B7BB77009F7275 /* libMRAUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51D92C18B7BB77009F7275 /* libMRAUI.a */; };
+		2E51D94518B7BB77009F7275 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E51D94318B7BB77009F7275 /* InfoPlist.strings */; };
+		2E51D94718B7BB77009F7275 /* MRAUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E51D94618B7BB77009F7275 /* MRAUITests.m */; };
+		2E51D94E18B7BBBC009F7275 /* UIView+additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E51D8D618B64B2E009F7275 /* UIView+additions.m */; };
+		2E51D94F18B7BBBC009F7275 /* MRAResetButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257418B648CD00411BF1 /* MRAResetButton.m */; };
+		2E51D95018B7BBBC009F7275 /* MRAViewSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257618B648CD00411BF1 /* MRAViewSlider.m */; };
+		2E51D95118B7BBBC009F7275 /* MRALayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E51D8D918B64D98009F7275 /* MRALayerSlider.m */; };
+		2E51D95218B7BBBC009F7275 /* MRAFillButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257818B648CD00411BF1 /* MRAFillButton.m */; };
+		2E51D95318B7BBBC009F7275 /* MRAIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257A18B648CD00411BF1 /* MRAIndicator.m */; };
+		2E51D95418B7BBBC009F7275 /* AUIAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5256D18B648C400411BF1 /* AUIAccessibilityElement.m */; };
+		2E51D95518B7BBBC009F7275 /* ScaleValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5256F18B648C400411BF1 /* ScaleValue.m */; };
 		2EB5253418B647DE00411BF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5253318B647DE00411BF1 /* Foundation.framework */; };
 		2EB5253618B647DE00411BF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5253518B647DE00411BF1 /* CoreGraphics.framework */; };
 		2EB5253818B647DE00411BF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5253718B647DE00411BF1 /* UIKit.framework */; };
@@ -22,9 +41,22 @@
 		2EB5255818B647DE00411BF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB5253718B647DE00411BF1 /* UIKit.framework */; };
 		2EB5256018B647DE00411BF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EB5255E18B647DE00411BF1 /* InfoPlist.strings */; };
 		2EB5256218B647DE00411BF1 /* MRA_UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5256118B647DE00411BF1 /* MRA_UITests.m */; };
+		2EB5257018B648C400411BF1 /* AUIAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5256D18B648C400411BF1 /* AUIAccessibilityElement.m */; };
+		2EB5257118B648C400411BF1 /* ScaleValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5256F18B648C400411BF1 /* ScaleValue.m */; };
+		2EB5257B18B648CD00411BF1 /* MRAResetButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257418B648CD00411BF1 /* MRAResetButton.m */; };
+		2EB5257C18B648CD00411BF1 /* MRAViewSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257618B648CD00411BF1 /* MRAViewSlider.m */; };
+		2EB5257D18B648CD00411BF1 /* MRAFillButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257818B648CD00411BF1 /* MRAFillButton.m */; };
+		2EB5257E18B648CD00411BF1 /* MRAIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5257A18B648CD00411BF1 /* MRAIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2E51D93D18B7BB77009F7275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EB5252818B647DE00411BF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E51D92B18B7BB77009F7275;
+			remoteInfo = MRAUI;
+		};
 		2EB5255918B647DE00411BF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2EB5252818B647DE00411BF1 /* Project object */;
@@ -34,7 +66,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2E51D92A18B7BB77009F7275 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				2E51D93218B7BB77009F7275 /* MRAUI.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2E51D8D518B64B2E009F7275 /* UIView+additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+additions.h"; sourceTree = "<group>"; };
+		2E51D8D618B64B2E009F7275 /* UIView+additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+additions.m"; sourceTree = "<group>"; };
+		2E51D8D818B64D98009F7275 /* MRALayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRALayerSlider.h; sourceTree = "<group>"; };
+		2E51D8D918B64D98009F7275 /* MRALayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRALayerSlider.m; sourceTree = "<group>"; };
+		2E51D92C18B7BB77009F7275 /* libMRAUI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMRAUI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E51D93018B7BB77009F7275 /* MRAUI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRAUI-Prefix.pch"; sourceTree = "<group>"; };
+		2E51D93118B7BB77009F7275 /* MRAUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRAUI.h; sourceTree = "<group>"; };
+		2E51D93318B7BB77009F7275 /* MRAUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRAUI.m; sourceTree = "<group>"; };
+		2E51D93918B7BB77009F7275 /* MRAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MRAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E51D94218B7BB77009F7275 /* MRAUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MRAUITests-Info.plist"; sourceTree = "<group>"; };
+		2E51D94418B7BB77009F7275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2E51D94618B7BB77009F7275 /* MRAUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRAUITests.m; sourceTree = "<group>"; };
 		2EB5253018B647DE00411BF1 /* MRA-UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MRA-UI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB5253318B647DE00411BF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2EB5253518B647DE00411BF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,9 +112,40 @@
 		2EB5255D18B647DE00411BF1 /* MRA-UITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MRA-UITests-Info.plist"; sourceTree = "<group>"; };
 		2EB5255F18B647DE00411BF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2EB5256118B647DE00411BF1 /* MRA_UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRA_UITests.m; sourceTree = "<group>"; };
+		2EB5256C18B648C400411BF1 /* AUIAccessibilityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUIAccessibilityElement.h; sourceTree = "<group>"; };
+		2EB5256D18B648C400411BF1 /* AUIAccessibilityElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUIAccessibilityElement.m; sourceTree = "<group>"; };
+		2EB5256E18B648C400411BF1 /* ScaleValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleValue.h; sourceTree = "<group>"; };
+		2EB5256F18B648C400411BF1 /* ScaleValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleValue.m; sourceTree = "<group>"; };
+		2EB5257318B648CD00411BF1 /* MRAResetButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAResetButton.h; sourceTree = "<group>"; };
+		2EB5257418B648CD00411BF1 /* MRAResetButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAResetButton.m; sourceTree = "<group>"; };
+		2EB5257518B648CD00411BF1 /* MRAViewSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAViewSlider.h; sourceTree = "<group>"; };
+		2EB5257618B648CD00411BF1 /* MRAViewSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAViewSlider.m; sourceTree = "<group>"; };
+		2EB5257718B648CD00411BF1 /* MRAFillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAFillButton.h; sourceTree = "<group>"; };
+		2EB5257818B648CD00411BF1 /* MRAFillButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAFillButton.m; sourceTree = "<group>"; };
+		2EB5257918B648CD00411BF1 /* MRAIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAIndicator.h; sourceTree = "<group>"; };
+		2EB5257A18B648CD00411BF1 /* MRAIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAIndicator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E51D92918B7BB77009F7275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E51D92D18B7BB77009F7275 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E51D93618B7BB77009F7275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E51D93A18B7BB77009F7275 /* XCTest.framework in Frameworks */,
+				2E51D93C18B7BB77009F7275 /* UIKit.framework in Frameworks */,
+				2E51D93F18B7BB77009F7275 /* libMRAUI.a in Frameworks */,
+				2E51D93B18B7BB77009F7275 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2EB5252D18B647DE00411BF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,11 +169,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E51D8D418B64B2E009F7275 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2E51D8D518B64B2E009F7275 /* UIView+additions.h */,
+				2E51D8D618B64B2E009F7275 /* UIView+additions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		2E51D92E18B7BB77009F7275 /* MRAUI */ = {
+			isa = PBXGroup;
+			children = (
+				2E51D93118B7BB77009F7275 /* MRAUI.h */,
+				2E51D93318B7BB77009F7275 /* MRAUI.m */,
+				2E51D92F18B7BB77009F7275 /* Supporting Files */,
+			);
+			path = MRAUI;
+			sourceTree = "<group>";
+		};
+		2E51D92F18B7BB77009F7275 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E51D93018B7BB77009F7275 /* MRAUI-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E51D94018B7BB77009F7275 /* MRAUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2E51D94618B7BB77009F7275 /* MRAUITests.m */,
+				2E51D94118B7BB77009F7275 /* Supporting Files */,
+			);
+			path = MRAUITests;
+			sourceTree = "<group>";
+		};
+		2E51D94118B7BB77009F7275 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E51D94218B7BB77009F7275 /* MRAUITests-Info.plist */,
+				2E51D94318B7BB77009F7275 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2EB5252718B647DE00411BF1 = {
 			isa = PBXGroup;
 			children = (
 				2EB5253918B647DE00411BF1 /* MRA-UI */,
 				2EB5255B18B647DE00411BF1 /* MRA-UITests */,
+				2E51D92E18B7BB77009F7275 /* MRAUI */,
+				2E51D94018B7BB77009F7275 /* MRAUITests */,
 				2EB5253218B647DE00411BF1 /* Frameworks */,
 				2EB5253118B647DE00411BF1 /* Products */,
 			);
@@ -96,6 +231,8 @@
 			children = (
 				2EB5253018B647DE00411BF1 /* MRA-UI.app */,
 				2EB5255418B647DE00411BF1 /* MRA-UITests.xctest */,
+				2E51D92C18B7BB77009F7275 /* libMRAUI.a */,
+				2E51D93918B7BB77009F7275 /* MRAUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +251,9 @@
 		2EB5253918B647DE00411BF1 /* MRA-UI */ = {
 			isa = PBXGroup;
 			children = (
+				2E51D8D418B64B2E009F7275 /* Categories */,
+				2EB5257218B648CD00411BF1 /* UI */,
+				2EB5256B18B648C400411BF1 /* Utilities */,
 				2EB5254218B647DE00411BF1 /* AppDelegate.h */,
 				2EB5254318B647DE00411BF1 /* AppDelegate.m */,
 				2EB5254518B647DE00411BF1 /* Main_iPhone.storyboard */,
@@ -155,9 +295,72 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2EB5256B18B648C400411BF1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5256C18B648C400411BF1 /* AUIAccessibilityElement.h */,
+				2EB5256D18B648C400411BF1 /* AUIAccessibilityElement.m */,
+				2EB5256E18B648C400411BF1 /* ScaleValue.h */,
+				2EB5256F18B648C400411BF1 /* ScaleValue.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2EB5257218B648CD00411BF1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2EB5257318B648CD00411BF1 /* MRAResetButton.h */,
+				2EB5257418B648CD00411BF1 /* MRAResetButton.m */,
+				2EB5257518B648CD00411BF1 /* MRAViewSlider.h */,
+				2EB5257618B648CD00411BF1 /* MRAViewSlider.m */,
+				2E51D8D818B64D98009F7275 /* MRALayerSlider.h */,
+				2E51D8D918B64D98009F7275 /* MRALayerSlider.m */,
+				2EB5257718B648CD00411BF1 /* MRAFillButton.h */,
+				2EB5257818B648CD00411BF1 /* MRAFillButton.m */,
+				2EB5257918B648CD00411BF1 /* MRAIndicator.h */,
+				2EB5257A18B648CD00411BF1 /* MRAIndicator.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E51D92B18B7BB77009F7275 /* MRAUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E51D94C18B7BB78009F7275 /* Build configuration list for PBXNativeTarget "MRAUI" */;
+			buildPhases = (
+				2E51D92818B7BB77009F7275 /* Sources */,
+				2E51D92918B7BB77009F7275 /* Frameworks */,
+				2E51D92A18B7BB77009F7275 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MRAUI;
+			productName = MRAUI;
+			productReference = 2E51D92C18B7BB77009F7275 /* libMRAUI.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2E51D93818B7BB77009F7275 /* MRAUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E51D94D18B7BB78009F7275 /* Build configuration list for PBXNativeTarget "MRAUITests" */;
+			buildPhases = (
+				2E51D93518B7BB77009F7275 /* Sources */,
+				2E51D93618B7BB77009F7275 /* Frameworks */,
+				2E51D93718B7BB77009F7275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E51D93E18B7BB77009F7275 /* PBXTargetDependency */,
+			);
+			name = MRAUITests;
+			productName = MRAUITests;
+			productReference = 2E51D93918B7BB77009F7275 /* MRAUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2EB5252F18B647DE00411BF1 /* MRA-UI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EB5256518B647DE00411BF1 /* Build configuration list for PBXNativeTarget "MRA-UI" */;
@@ -202,6 +405,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = dnbapp;
 				TargetAttributes = {
+					2E51D93818B7BB77009F7275 = {
+						TestTargetID = 2EB5252F18B647DE00411BF1;
+					};
 					2EB5255318B647DE00411BF1 = {
 						TestTargetID = 2EB5252F18B647DE00411BF1;
 					};
@@ -222,11 +428,21 @@
 			targets = (
 				2EB5252F18B647DE00411BF1 /* MRA-UI */,
 				2EB5255318B647DE00411BF1 /* MRA-UITests */,
+				2E51D92B18B7BB77009F7275 /* MRAUI */,
+				2E51D93818B7BB77009F7275 /* MRAUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E51D93718B7BB77009F7275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E51D94518B7BB77009F7275 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2EB5252E18B647DE00411BF1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,12 +465,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2E51D92818B7BB77009F7275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E51D94E18B7BBBC009F7275 /* UIView+additions.m in Sources */,
+				2E51D94F18B7BBBC009F7275 /* MRAResetButton.m in Sources */,
+				2E51D95018B7BBBC009F7275 /* MRAViewSlider.m in Sources */,
+				2E51D95118B7BBBC009F7275 /* MRALayerSlider.m in Sources */,
+				2E51D95218B7BBBC009F7275 /* MRAFillButton.m in Sources */,
+				2E51D95318B7BBBC009F7275 /* MRAIndicator.m in Sources */,
+				2E51D95418B7BBBC009F7275 /* AUIAccessibilityElement.m in Sources */,
+				2E51D95518B7BBBC009F7275 /* ScaleValue.m in Sources */,
+				2E51D93418B7BB77009F7275 /* MRAUI.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E51D93518B7BB77009F7275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E51D94718B7BB77009F7275 /* MRAUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2EB5252C18B647DE00411BF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2EB5254D18B647DE00411BF1 /* ViewController.m in Sources */,
+				2EB5257018B648C400411BF1 /* AUIAccessibilityElement.m in Sources */,
+				2E51D8D718B64B2E009F7275 /* UIView+additions.m in Sources */,
+				2EB5257D18B648CD00411BF1 /* MRAFillButton.m in Sources */,
+				2EB5257118B648C400411BF1 /* ScaleValue.m in Sources */,
+				2EB5257E18B648CD00411BF1 /* MRAIndicator.m in Sources */,
+				2EB5257B18B648CD00411BF1 /* MRAResetButton.m in Sources */,
+				2E51D8DA18B64D98009F7275 /* MRALayerSlider.m in Sources */,
 				2EB5254418B647DE00411BF1 /* AppDelegate.m in Sources */,
+				2EB5257C18B648CD00411BF1 /* MRAViewSlider.m in Sources */,
 				2EB5254018B647DE00411BF1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +518,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2E51D93E18B7BB77009F7275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E51D92B18B7BB77009F7275 /* MRAUI */;
+			targetProxy = 2E51D93D18B7BB77009F7275 /* PBXContainerItemProxy */;
+		};
 		2EB5255A18B647DE00411BF1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2EB5252F18B647DE00411BF1 /* MRA-UI */;
@@ -278,6 +531,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2E51D94318B7BB77009F7275 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E51D94418B7BB77009F7275 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		2EB5253C18B647DE00411BF1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -313,6 +574,78 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2E51D94818B7BB78009F7275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				DSTROOT = /tmp/MRAUI.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MRAUI/MRAUI-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2E51D94918B7BB78009F7275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				DSTROOT = /tmp/MRAUI.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MRAUI/MRAUI-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2E51D94A18B7BB78009F7275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MRA-UI.app/MRA-UI";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MRAUI/MRAUI-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MRAUITests/MRAUITests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2E51D94B18B7BB78009F7275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MRA-UI.app/MRA-UI";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MRAUI/MRAUI-Prefix.pch";
+				INFOPLIST_FILE = "MRAUITests/MRAUITests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		2EB5256318B647DE00411BF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -458,6 +791,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E51D94C18B7BB78009F7275 /* Build configuration list for PBXNativeTarget "MRAUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E51D94818B7BB78009F7275 /* Debug */,
+				2E51D94918B7BB78009F7275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2E51D94D18B7BB78009F7275 /* Build configuration list for PBXNativeTarget "MRAUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E51D94A18B7BB78009F7275 /* Debug */,
+				2E51D94B18B7BB78009F7275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2EB5252B18B647DE00411BF1 /* Build configuration list for PBXProject "MRA-UI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -474,6 +823,7 @@
 				2EB5256718B647DE00411BF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2EB5256818B647DE00411BF1 /* Build configuration list for PBXNativeTarget "MRA-UITests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +832,7 @@
 				2EB5256A18B647DE00411BF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
