@@ -35,4 +35,4 @@ Add libMRAUI.a.
 
 Under "Build Settings", find the entry "User Header Search Paths". Add a recursive entry for your base MRA-UI 
 
-Under "Linking", find the entry "Other Linker Flags". Add "-all_load -ObjC" for both Debug and Release
+Under "Linking", find the entry "Other Linker Flags". Add -all_load -ObjC for both Debug and Release
