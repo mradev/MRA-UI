@@ -33,5 +33,6 @@ Under "Build Phases", then "Target Dependencies", click the plus icon and add MR
 Under "Build Phases", then "Link Binary With Libraries", click the plus icon to choose the frameworks/libraries we need to add. 
 Add libMRAUI.a.
 
+Under "Build Settings", find the entry "User Header Search Paths". Add a recursive entry for your base MRA-UI 
 
-Under "Build Settings", find the entry "User Header Search Paths". Add a recursive entry for your base MRA-UI Directory
+Under "Linking", find the entry "Other Linker Flags". Add "-all_load -ObjC" for both Debug and Release
