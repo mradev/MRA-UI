@@ -1,6 +1,6 @@
 //
 //  MRALayerSlider.m
-//  testingstuff
+//  MRA-UI
 //
 //  Created by paul adams on 07/01/2014.
 //  Copyright (c) 2014 paul adams. All rights reserved.

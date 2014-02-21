@@ -1,5 +1,6 @@
 //
 //  MRAFillButton.h
+//  MRA-UI
 //
 //  Created by paul adams on 06/01/2014.
 //  Copyright (c) 2014 dnbapp. All rights reserved.
@@ -38,7 +39,7 @@
 //button fill layer foregorund used as the indicator
 @property(strong,nonatomic)UIColor *foreGroundFill;
 
-//button curve, default is 0.25
+//button corner radius, default is 0.25
 @property(assign,nonatomic)CGFloat buttonCornerRadius;
 
 // whether button stays selected when touched

@@ -1,6 +1,6 @@
 //
 //  MRAViewSlider.h
-//  MRA_UI
+//  MRA-UI
 //
 //  Created by paul adams on 07/01/2014.
 //  Copyright (c) 2014 paul adams. All rights reserved.
@@ -34,8 +34,10 @@
 @property(strong,nonatomic)UIColor *cursorColour;
 @property (strong,nonatomic)UIColor *borderColour;
 @property (assign,nonatomic)CGFloat borderWidth;
+
 //curve of slider, not used if set as circular
 @property (assign,nonatomic)CGFloat curvePercent;
+
 //create a circular style style slider
 @property (assign,nonatomic,getter = isCircular)BOOL circular;
 
