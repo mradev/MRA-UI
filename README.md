@@ -1,7 +1,7 @@
 MRA-UI
 ==============
 
-A Collection of Core Graphics based UI Classes.
+A Collection of Core Graphics based UI Classes. All Sliders and Indicators can be set as vertical styles also.
 
 MRAViewSlider - Slider Class with a UIView based Cursor
 
