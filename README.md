@@ -13,4 +13,4 @@ MRAIndicator - Progress Indicator
 
 MRAResetButton - Reset style button
 
-![ScreenShot](https://raw.github.com/MRA-UI/screenshot.png)
+![ScreenShot](https://raw.github.com/mradev/MRA-UI/screenshot.png)
